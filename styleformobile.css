@@ -1,0 +1,44 @@
+@media (max-width: 768px) {
+    
+nav{
+    padding: .2rem .6rem;
+    height:50px;
+    box-sizing: border-box;
+    padding: 2rem 3rem;
+}
+.logo img{
+    height: 30px;
+}
+.nav-menu{
+    display: none;
+}
+.menuicon{
+    display: block;
+    font-size: 35px;
+    cursor: pointer;
+}
+.menuicon:hover ~ .nav-menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
+.nav-menu a{
+    text-decoration: none;
+    color: black;
+    font-size: 10px;
+    font-weight: 500;
+
+}
+.nav-menu a:hover{
+    color:  #7c3971;
+    /* font-weight: bold; */
+    transition: all 0.3s ease-in;
+}
+    
+}
