@@ -109,13 +109,12 @@ main .slider .images img{
 }
 
 /* hero section */
-/* .hero{
+.hero{
     width: 90%;
     height: auto;
     margin: 2rem 5%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     border: 1px solid black;
 }
 .hero section{
@@ -125,12 +124,16 @@ main .slider .images img{
     box-sizing: border-box;
     overflow: hidden;
 }
-
-.hero section img{
+.hero :first-child{
+    width: 70%;
+}
+.hero .hero-img{
+    width: 30%;
+}
+.hero .hero-img img{
     width:200%;
     height: 200%;
     box-sizing: border-box;
-    padding: 1rem 0 0 10rem ;
 }
 .hero section h1{
     width: 100%;
@@ -139,10 +142,10 @@ main .slider .images img{
     margin: 7rem 3rem 1rem 3rem;
     text-transform: capitalize;
 }
-.hero    #off{
+.hero #off{
     margin: 1rem 3rem 1rem 3rem;
-     font-size: 50px;
-    }
+    font-size: 50px;
+}
 .hero section p{
     font-size: 30px;
     margin: 0 3rem;
@@ -157,4 +160,4 @@ main .slider .images img{
     background-color: #7c3971;
     color: white;
     border-radius: 4px;
-} */
+}
