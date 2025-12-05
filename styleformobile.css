@@ -185,7 +185,7 @@
         white-space: nowrap;
         overflow: hidden;
         transition: 0.8s;
-        height: calc(100vh - 60px);
+        height: calc(100vh - 20vh);
         z-index: 1;
         background-color: #7c3971;
         color: white;
