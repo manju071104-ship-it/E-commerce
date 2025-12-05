@@ -28,9 +28,10 @@
         flex-direction: column;
         width: 30%;
         position: absolute;
-        top: 120px;
-        right: 10px;
+        top: 35px;
+        height: fit-content;
         background-color: white;
+        right: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 10px;
         border-radius: 5px;

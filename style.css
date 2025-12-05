@@ -107,6 +107,43 @@ main .slider .images img{
     height: 100%;
     object-fit: cover;
 }
+/* cart floating */
+
+.cart{
+    width: 0;
+    position: absolute;
+    border: 1px solid black;
+    height: calc(100vh - 10%);
+    background-color: #ffffff;
+    box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.926);
+    transition: 0.8s;
+    white-space: nowrap;
+    right: 0;
+    overflow: hidden;
+}
+.cart.active{
+    right: 0;
+    width: 20%;
+}
+
+/* cart styling */
+
+.cart .close{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart .close a{
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    font-size: 150%;
+}
 
 /* hero section */
 .hero{
@@ -131,8 +168,7 @@ main .slider .images img{
     width: 30%;
 }
 .hero .hero-img img{
-    width:200%;
-    height: 200%;
+    width:230%;
     box-sizing: border-box;
 }
 .hero section h1{

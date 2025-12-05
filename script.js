@@ -27,4 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setInterval(next,3000)
     slider(0);
+
+
+    // sliding cart creation 
+
+    let cart = document.querySelector('.cart-slide');
+    let slidingcart = document.querySelector('.cart');
+
+    cart.addEventListener('click',(e) => {
+        e.preventDefault();
+        slidingcart.classList.toggle('active');
+    })
+    console.log(cart);
+    console.log(slidingcart);
 });
