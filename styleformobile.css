@@ -86,7 +86,7 @@
     main .slider {
         width: 90%;
         margin: 1rem 5%;
-        height: auto;   
+        height: auto;
     }
 
     main .slider .images {
@@ -118,17 +118,19 @@
         box-sizing: border-box;
         overflow: hidden;
     }
-    .hero :first-child{
+
+    .hero :first-child {
         width: 70%;
         height: 100%;
     }
 
     .hero .hero-img img {
         width: 200%;
-        height:200%;
+        height: 200%;
         box-sizing: border-box;
     }
-    .hero .hero-img{
+
+    .hero .hero-img {
         width: 30vw;
         height: 100%;
         align-items: baseline;
@@ -141,7 +143,8 @@
         text-transform: capitalize;
         white-space: nowrap;
     }
-    .hero #off{
+
+    .hero #off {
         width: 50%;
         margin: .3rem 0 0 1rem;
         font-size: 54%;
@@ -157,7 +160,7 @@
         width: 30%;
         height: 20%;
         font-size: 10%;
-        margin: 0.3rem  0 0 1rem ;
+        margin: 0.3rem 0 0 1rem;
         border: none;
         outline: none;
         background-color: #7c3971;
@@ -165,10 +168,78 @@
         border-radius: 2px;
         padding: 0;
     }
+
+    /* cart styling none */
+    .cart,
+    .cart.active {
+        width: 0%;
+    }
+
+    /* cart for mobile */
+
+    .cart-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: 0.8s;
+        height: calc(100vh - 60px);
+        z-index: 1;
+        background-color: #7c3971;
+        color: white;
+    }
+    .cart-mobile >*{
+        margin: 10px;
+    }
+
+    .cart-mobile.active{
+        width: 100vw;
+    }
+    .cart-mobile .cart-heading h1{
+        font-size: larger;
+        text-align: center;
+    }
+
+    /* cart items mobile */
+
+    .cart-mobile .cart-mobile-items{
+        height: 80vh;
+    }
+
+    /* cart close styling */
+
+    .cart-mobile .close-mobile {
+        width: 100%;
+        position: relative;
+        height: 5%;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-mobile .close-mobile a {
+        background-color: red;
+        width: 40%;
+        text-decoration: none;
+        color: white;
+        font-size: 10   0%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cart-mobile .close-mobile a:hover {
+        color: greenyellow;
+    }
 }
 
-@media (min-width:426px) and ( max-width: 768px){
-    
+@media (min-width:426px) and (max-width: 768px) {
+
     .hero section h1 {
         width: 100%;
         font-size: 2.4rem;
@@ -176,7 +247,8 @@
         text-transform: capitalize;
         white-space: nowrap;
     }
-    .hero #off{
+
+    .hero #off {
         width: 50%;
         margin: .3rem 0 0 1rem;
         font-size: 1.7rem;
