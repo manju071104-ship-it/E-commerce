@@ -247,13 +247,19 @@ main .slider .images img{
     display: flex;
     flex-direction: row;
     height: 60vh;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
+.heading{
+    width: 100%;
+    font-size: 2vw;
+}
 /* product styling */
 .product{
-    width: 18%;
-    margin: 0 1%;
-    background-color: rgba(235, 212, 155, 0.616);
+    width: 15%;
+    height: 50vh;
+    /* margin: 0 1%; */
     border-radius: 2px;
 }
 .products .product>*,.description>*{
@@ -262,16 +268,21 @@ main .slider .images img{
 .product img{
     margin: 0 10px;
     width: 96%;
-    height: 40%;
+    height: 60%;
     object-fit: fill;
-    background-color: #7c3971;
     border-radius: 5px;
 }
 .products .description{
     display: flex;
     flex-direction: column;
     margin: 0 10px;
+    white-space: nowrap;
+    overflow-x: scroll;
 }
+.products .description::-webkit-scrollbar{
+    display: none;
+}
+
 .products .description .rating{
     display: flex;
     flex-direction: row;
@@ -280,21 +291,23 @@ main .slider .images img{
     gap: 10px;  
 }
 .products .description .info{
-    margin: 0 10px;
+    margin: 10px;
     overflow-y: scroll;
-    height:68px;
+    white-space: wrap;
+    height:80px;
 }
 .products .description .info::-webkit-scrollbar{
     display: none;
 }
 .products .description .info p{
     font-weight: 400;
-    font-size: 12px;
+    font-size: 14px;
+    height: 70px;
 }
 .product .description .rating p{
     font-size: 15px;
+    font-weight: bold;
 }
 .product .description .price h4{
     font-weight: bold;
-    font-size: 20px;
 }

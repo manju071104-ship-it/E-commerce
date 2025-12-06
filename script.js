@@ -85,13 +85,19 @@ document.addEventListener('DOMContentLoaded', () => {
         "womens-watches"
     ]
 
-
+    const category1 = [
+    "groceries",
+    "kitchen-accessories",
+    "mobile-accessories",
+    "smartphones",
+    "sports-accessories",
+    ];
 
 
     async function loadprodcuts() {
 
         const products = document.querySelector('.products');
-        const random = category[Math.floor(Math.random() * 24)]
+        const random = category1[Math.floor(Math.random() * category1.length)]
         const url = `https://dummyjson.com/products/category/${random}`;
 
         mavic = await fetch(url);
@@ -103,28 +109,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // product adding into the html page
 
-            let product = document.createElement('div');
-            product.className = 'product';
+            data.products.slice(0, 12).forEach((e,i) => {
 
 
-            let img = document.createElement('img');
-            img.src = `${data.products[0].images[0]}`;
-            
-            let description = document.createElement('div');
-            description.className = 'description';
-            
-            let h3 = document.createElement('h3');
-            h3.innerHTML = data.products[0].title;
-            
-            let rating = document.createElement('div');
-            rating.className = 'rating';
+                if (i === 0) {
+                    let heading = document.createElement('h2');
+                    let header = document.createElement('div');
+                    header.className = 'heading';
+                    heading.innerHTML = e.category;
+                    header.appendChild(heading);
+                    products.appendChild(header);
 
-            
-            
-            product.appendChild(img)
-            description.appendChild(h3);
-            product.appendChild(description);
-            products.appendChild(product);
+                }
+
+                let product = document.createElement('div');
+                product.className = 'product';
+
+
+                let img = document.createElement('img');
+                img.src = `${e.images[0]}`;
+
+                let description = document.createElement('div');
+                description.className = 'description';
+
+                let h3 = document.createElement('h3');
+                h3.innerHTML = e.title;
+
+                let rate = document.createElement('div');
+                rate.className = 'rating';
+                let ratingp = document.createElement('p');
+                let productbought = document.createElement('p');
+
+                // coloring the stars used for rating
+
+                if(Math.floor(e.rating) >= 4 ){
+                    ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:green; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
+                }
+
+                else{
+                    ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:red; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
+                }
+
+
+
+                productbought.innerHTML = 'stock ' + e.stock;
+
+
+                let price = document.createElement('div');
+                price.className = 'price';
+                let h4 = document.createElement('h4');
+                h4.innerHTML =`<i class="fa-solid fa-indian-rupee-sign"></i>`+ e.price;
+                price.appendChild(h4);
+                
+
+
+                product.appendChild(img);
+                description.appendChild(h3);
+                rate.appendChild(ratingp);
+                rate.appendChild(productbought);
+                description.appendChild(rate);
+                description.appendChild(price);
+                product.appendChild(description);
+                products.appendChild(product);
+            });
+
         } else {
             loadprodcuts();
         }
@@ -132,3 +180,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadprodcuts();
 });
+
+
