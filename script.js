@@ -50,4 +50,85 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         slidingcartmobile.classList.toggle('active');
     })
+
+
+
+
+
+
+    // api handling for the products
+
+    const category = [
+        "beauty",
+        "fragrances",
+        "furniture",
+        "groceries",
+        "home-decoration",
+        "kitchen-accessories",
+        "laptops",
+        "mens-shirts",
+        "mens-shoes",
+        "mens-watches",
+        "mobile-accessories",
+        "motorcycle",
+        "skin-care",
+        "smartphones",
+        "sports-accessories",
+        "sunglasses",
+        "tablets",
+        "tops",
+        "vehicle",
+        "womens-bags",
+        "womens-dresses",
+        "womens-jewellery",
+        "womens-shoes",
+        "womens-watches"
+    ]
+
+
+
+
+    async function loadprodcuts() {
+
+        const products = document.querySelector('.products');
+        const random = category[Math.floor(Math.random() * 24)]
+        const url = `https://dummyjson.com/products/category/${random}`;
+
+        mavic = await fetch(url);
+        data = await mavic.json();
+        console.log(data);
+        if (data.products.length >= 10) {
+            console.log('mavic')
+
+
+            // product adding into the html page
+
+            let product = document.createElement('div');
+            product.className = 'product';
+
+
+            let img = document.createElement('img');
+            img.src = `${data.products[0].images[0]}`;
+            
+            let description = document.createElement('div');
+            description.className = 'description';
+            
+            let h3 = document.createElement('h3');
+            h3.innerHTML = data.products[0].title;
+            
+            let rating = document.createElement('div');
+            rating.className = 'rating';
+
+            
+            
+            product.appendChild(img)
+            description.appendChild(h3);
+            product.appendChild(description);
+            products.appendChild(product);
+        } else {
+            loadprodcuts();
+        }
+    }
+
+    loadprodcuts();
 });

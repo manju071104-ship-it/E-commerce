@@ -35,6 +35,8 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 10px;
         border-radius: 5px;
+        text-align: start;
+        align-items: start;
     }
 
     .nav-menu a {
@@ -185,10 +187,12 @@
         white-space: nowrap;
         overflow: hidden;
         transition: 0.8s;
-        height: calc(100vh - 20vh);
+        height: calc(100vh - 10vh);
         z-index: 1;
         background-color: #7c3971;
         color: white;
+        top: 0;
+
     }
     .cart-mobile >*{
         margin: 10px;
