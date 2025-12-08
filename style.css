@@ -264,11 +264,11 @@ main .slider .images img{
     /* margin: 0 1%; */
     border-radius: 2px;
 }
-.products .product>*,.description>*{
+.products .product>*{
     margin: 5px;
 }
 
-.products-2 .product>*,.description>*{  /* for section 2 */
+.products-2 .product>*{  /* for section 2 */
     margin: 5px;
 }
 .product img{
