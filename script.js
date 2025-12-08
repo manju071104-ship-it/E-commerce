@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // api handling for the products
 
-    const category = [
+    const category1 = [
         "beauty",
         "fragrances",
         "furniture",
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "womens-watches"
     ]
 
-    const category1 = [
+    const category2 = [
     "groceries",
     "kitchen-accessories",
     "mobile-accessories",
@@ -93,12 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
     "sports-accessories",
     ];
 
+    section1 = document.querySelector('.products');
+    section2 = document.querySelector('.products-2');
 
-    async function loadprodcuts() {
 
-        const products = document.querySelector('.products');
-        const random = category1[Math.floor(Math.random() * category1.length)]
+    async function loadprodcuts(products,category) {
+
+        const random = category[Math.floor(Math.random() * category.length)]
         const url = `https://dummyjson.com/products/category/${random}`;
+
 
         mavic = await fetch(url);
         data = await mavic.json();
@@ -124,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let product = document.createElement('div');
                 product.className = 'product';
+                product.id = e.id;
 
 
                 let img = document.createElement('img');
@@ -158,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let price = document.createElement('div');
                 price.className = 'price';
                 let h4 = document.createElement('h4');
-                h4.innerHTML =`<i class="fa-solid fa-indian-rupee-sign"></i>`+ e.price;
+                h4.innerHTML =`<i class="fa-solid fa-indian-rupee-sign"></i>`+ Math.floor(e.price*90);
                 price.appendChild(h4);
                 
 
@@ -174,11 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
         } else {
-            loadprodcuts();
+            loadprodcuts(products,category);
         }
     }
 
-    loadprodcuts();
+    loadprodcuts(section1,category2);
+    loadprodcuts(section2,category2);
 });
 
 

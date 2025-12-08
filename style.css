@@ -237,16 +237,18 @@ main .slider .images img{
     color: white;
     border-radius: 4px;
 }
+.hero section button:hover{
+    scale: calc(1.05);
+}
 
 
 /* product styling */
 
-.products{
+.products,.products-2{
     width: 90%;
     margin: 0 5%;
     display: flex;
     flex-direction: row;
-    height: 60vh;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -265,12 +267,20 @@ main .slider .images img{
 .products .product>*,.description>*{
     margin: 5px;
 }
+
+.products-2 .product>*,.description>*{  /* for section 2 */
+    margin: 5px;
+}
 .product img{
     margin: 0 10px;
     width: 96%;
     height: 60%;
     object-fit: fill;
     border-radius: 5px;
+}
+.product img:hover{
+    scale: calc(0.9);
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,.25))
 }
 .products .description{
     display: flex;
@@ -279,7 +289,16 @@ main .slider .images img{
     white-space: nowrap;
     overflow-x: scroll;
 }
-.products .description::-webkit-scrollbar{
+
+.products-2 .description {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.products .description::-webkit-scrollbar,.products-2 .description::-webkit-scrollbar{
     display: none;
 }
 
@@ -289,6 +308,13 @@ main .slider .images img{
     justify-content: start;
     margin: 0 10px;
     gap: 10px;  
+}
+.products-2 .description .rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 0 10px;
+    gap: 10px;
 }
 .products .description .info{
     margin: 10px;
