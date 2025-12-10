@@ -309,6 +309,67 @@
         font-size: 6px;
     }
 
+    footer{
+    width: 100%;
+    background-color: #1f1f1f;
+    height: 30vh;
+    box-sizing: border-box;
+    padding: 5%;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    height: auto;
+    gap: 5%;
+}
+.footer div{
+    height: auto;
+    width: 30%;
+    color: white;
+    font-weight: bold;
+}
+
+.footer div a{
+    text-decoration: none;
+    color: white;
+    font-size: xx-small;
+    white-space: wrap;
+}
+
+.footer div a:hover{
+    text-decoration: underline;
+    text-decoration-color: red ;
+}
+
+.footer div .transparent{
+    color: rgba(255, 255, 255, 0.507);
+    height: 8px;
+}
+
+.footer div li{
+    list-style: none;
+    margin-bottom: .4rem;
+    font-size: small;
+    height: 8px;
+    width: max-content;
+}
+.footer hr{
+    display: none;
+    margin: 0 .4rem ;
+    rotate: calc(90deg)
+}
+.footer .social{
+    margin-left: 40px;
+}
+
+.footer .social svg{
+    height: 10px;
+    margin-right: .8rem;
+}
+
 }
 
 @media (min-width:426px) and (max-width: 768px) {
@@ -408,5 +469,57 @@
     .product .price h4{
         font-size: 18px;
     }
+
+    footer{
+    width: 100%;
+    background-color: #1f1f1f;
+    height: 60vh;
+    box-sizing: border-box;
+    padding: 5%;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.footer div{
+    margin-bottom: 1rem;
+    width: 30%;
+    color: white;
+    font-weight: bold;
+}
+
+.footer div a{
+    text-decoration: none;
+    color: white;
+    font-size: medium;
+}
+
+.footer div a:hover{
+    text-decoration: underline;
+    text-decoration-color: red ;
+}
+
+.footer div .transparent{
+    color: rgba(255, 255, 255, 0.507);
+}
+
+.footer div li{
+    list-style: none;
+    margin-bottom: 1rem;
+}
+.footer hr{
+    margin: 0 1rem ;
+}
+
+.footer .social{
+    margin: 0;
+    width: 35%;
+}
+.footer .social svg{
+    height: 30px;
+    margin-right: 1rem;
+}
 
 }

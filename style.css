@@ -109,6 +109,10 @@ main .slider .images img{
     object-fit: cover;
 }
 
+section{
+    margin-bottom: 1rem;
+}
+
 /* cart mobile display none in laptop view */
 .cart-mobile{
     display: none;
@@ -336,4 +340,63 @@ main .slider .images img{
 }
 .product .description .price h4{
     font-weight: bold;
+}
+
+/* footer */
+
+footer{
+    width: 100%;
+    background-color: #1f1f1f;
+    height: 50vh;
+    box-sizing: border-box;
+    padding: 5%;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.footer div{
+    width: 20%;
+    color: white;
+    font-weight: bold;
+}
+
+.footer div a{
+    text-decoration: none;
+    color: white;
+    width: auto;
+    white-space: nowrap;
+}
+
+.footer div a:hover{
+    text-decoration: underline;
+    text-decoration-color: red ;
+}
+
+.footer div .transparent{
+    color: rgba(255, 255, 255, 0.507);
+}
+
+.footer div .transparent:hover{
+    text-decoration: none;
+    cursor:default;
+}
+
+.footer div li{
+    list-style: none;
+    margin-bottom: 1rem;
+}
+.footer hr{
+    margin: 0 1rem ;
+}
+
+.footer .social svg{
+    height: 30px;
+    margin-right: 1rem;
+}
+
+.footer .social svg:hover{
+    color: blue;
 }
