@@ -8,8 +8,31 @@
     text-transform: capitalize;
 }
 
+.intro{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+}
+
+.intro img{
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    align-items: center;
+    margin: auto;
+    filter: brightness(1.1) saturate(1.5) contrast(1.1);
+}
+
+
+body.scroll{
+    overflow: auto;
+}
 body {
     background-color: #ffffff;
+    overflow: hidden;
 }
 
 nav {
@@ -317,8 +340,11 @@ section{
     display: flex;
     flex-direction: row;
     justify-content: start;
-    margin: 0 10px;
+    margin: 0 ;
     gap: 10px;
+}
+.product .description >*{
+    margin: 5px;
 }
 .products .description .info{
     margin: 10px;
@@ -340,6 +366,7 @@ section{
 }
 .product .description .price h4{
     font-weight: bold;
+    font-size: 18px;
 }
 
 /* footer */

@@ -86,18 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
     const category2 = [
-    "groceries",
-    "kitchen-accessories",
-    "mobile-accessories",
-    "smartphones",
-    "sports-accessories",
+        "groceries",
+        "kitchen-accessories",
+        "mobile-accessories",
+        "smartphones",
+        "sports-accessories",
     ];
 
     section1 = document.querySelector('.products');
     section2 = document.querySelector('.products-2');
 
 
-    async function loadprodcuts(products,category) {
+    async function loadprodcuts(products, category) {
 
         const random = category[Math.floor(Math.random() * category.length)]
         const url = `https://dummyjson.com/products/category/${random}`;
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // product adding into the html page
 
-            data.products.slice(0, 12).forEach((e,i) => {
+            data.products.slice(0, 12).forEach((e, i) => {
 
 
                 if (i === 0) {
@@ -146,11 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // coloring the stars used for rating
 
-                if(Math.floor(e.rating) >= 4 ){
+                if (Math.floor(e.rating) >= 4) {
                     ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:green; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
                 }
 
-                else{
+                else {
                     ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:red; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
                 }
 
@@ -162,9 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 let price = document.createElement('div');
                 price.className = 'price';
                 let h4 = document.createElement('h4');
-                h4.innerHTML =`<i class="fa-solid fa-indian-rupee-sign"></i>`+ Math.floor(e.price*90);
+                h4.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.floor(e.price * 90);
                 price.appendChild(h4);
-                
+
 
 
                 product.appendChild(img);
@@ -178,12 +178,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
         } else {
-            loadprodcuts(products,category);
+            loadprodcuts(products, category);
         }
     }
 
-    loadprodcuts(section1,category2);
-    loadprodcuts(section2,category2);
+    loadprodcuts(section1, category2);
+    loadprodcuts(section2, category2);
+
+
+
+
+    // intro setup
+
+    let intro = document.querySelector('.intro');
+
+    setTimeout(() => {
+        document.body.classList.toggle('scroll') // to stop scrolling while the intro was playing
+        intro.style.display = 'none';
+    }, 3000);
+
+    // on refresh to come on the top
+
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
 });
 
 
