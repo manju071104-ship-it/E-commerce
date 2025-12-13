@@ -294,6 +294,9 @@
         margin: 0;
         gap: 0;
     }
+    .product .description >* {
+    margin: 0px;
+    }
 
     .product .description .rating p svg{
         width: 4px;
@@ -308,6 +311,54 @@
     .product .description .price h4{
         font-size: 6px;
     }
+
+
+    
+/* Category page styling */
+
+.category-body{
+    overflow: auto;
+}
+
+.category-heading{
+    display: flex;
+    height: 15vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-heading img{
+    height: 100%;
+}
+
+.category{
+    background-color: rgba(0, 0, 255, 0.758);
+    color: white;
+    width: 100vw;
+    /* margin:0 5vw; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: scroll;
+}
+.category::-webkit-scrollbar{
+    display: none;
+}
+.category h4{
+    cursor: pointer;
+    white-space: nowrap;
+    margin: 0 5px;
+    text-shadow: 1px 1px 1px black;
+    /* font-size: auto; */
+    font-size: 10px;
+    /* height: 10px; */
+}
+.category h4:hover{
+    /* background-color: aliceblue; */
+    /* color: red; */
+    letter-spacing: 1px;
+}
 
     footer{
     width: 100%;

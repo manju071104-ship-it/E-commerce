@@ -369,6 +369,52 @@ section{
     font-size: 18px;
 }
 
+
+
+/* Category page styling */
+
+.category-body{
+    overflow: auto;
+    height: 100%;
+}
+
+.category-heading{
+    display: flex;
+    height: 15vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-heading img{
+    height: 100%;
+}
+
+.category{
+    background-color: rgba(0, 0, 255, 0.758);
+    color: white;
+    width: 100vw;
+    /* margin:0 5vw; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.category h4{
+    cursor: pointer;
+    text-shadow: 3px 3px 1px black;
+    font-size: auto;
+}
+.category h4:hover{
+    /* background-color: aliceblue; */
+    /* color: red; */
+    letter-spacing: 1px;
+}
+
+
+.category hr{
+    max-width: 1px;
+}
+
 /* footer */
 
 footer{
