@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let womenbutton = document.querySelector('#womenbutton');
 
-        if(womenbutton){
-            womenbutton.addEventListener('click',()=>{
+        if (womenbutton) {
+            womenbutton.addEventListener('click', () => {
                 window.location.href = 'category.html';
             })
         }
@@ -116,56 +116,63 @@ document.addEventListener('DOMContentLoaded', () => {
                     product.className = 'product';
                     product.id = e.id;
 
-
-                    let img = document.createElement('img');
-                    img.src = `${e.images[0]}`;
+                    let name = document.createElement('div');
+                    name.className = 'name';
+                    let h4 = document.createElement('h4');
+                    h4.innerHTML = e.title;
+                    name.appendChild(h4);
 
                     let description = document.createElement('div');
                     description.className = 'description';
 
-                    let h3 = document.createElement('h3');
-                    h3.innerHTML = e.title;
-
-                    let rate = document.createElement('div');
-                    rate.className = 'rating';
-                    let ratingp = document.createElement('p');
-                    let productbought = document.createElement('p');
-
-                    // coloring the stars used for rating
-
-                    if (Math.floor(e.rating) >= 4) {
-                        ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:green; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
-                    }
-
-                    else {
-                        ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:red; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
-                    }
-
-
-
-                    productbought.innerHTML = 'stock ' + e.stock;
-
+                    let image = document.createElement('div');
+                    image.className = 'image';
+                    let img = document.createElement('img');
+                    img.src = e.images[0];
+                    image.appendChild(img);
+                    description.appendChild(image);
 
                     let price = document.createElement('div');
                     price.className = 'price';
-                    let h4 = document.createElement('h4');
-                    h4.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.floor(e.price * 90);
-                    price.appendChild(h4);
 
 
+                    let pricing = document.createElement('div');
+                    pricing.className = 'pricing';
 
-                    product.appendChild(img);
-                    description.appendChild(h3);
-                    rate.appendChild(ratingp);
-                    rate.appendChild(productbought);
-                    description.appendChild(rate);
+                    let h6 = document.createElement('h6');
+                    h6.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(((e.price + e.discountPercentage) * 86));
+                    let h44 = document.createElement('h4');
+                    h44.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(e.price) * 86;
+
+                    pricing.appendChild(h6);
+                    pricing.appendChild(h44);
+
+
+                    price.innerHTML = ''; // clear first
+
+                    const heart = document.createElement('i');
+                    heart.className = 'fa-regular fa-heart';
+
+                    const cart = document.createElement('i');
+                    cart.className = 'fa-solid fa-cart-shopping';
+
+                    price.append(heart, pricing, cart);
+
                     description.appendChild(price);
+
+                    product.appendChild(name);
                     product.appendChild(description);
                     products.appendChild(product);
+
+
+
+
+
+
                 });
 
-            } else {
-                loadprodcuts(products, category);
+            } else{
+                loadprodcuts(products,category2)
             }
         }
 
@@ -200,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoryproducts = document.querySelector('.products');
 
 
-        const women = [ "womens-dresses", "womens-jewellery","womens-bags", "womens-shoes", "tops", "womens-watches"];
+        const women = ["womens-dresses", "womens-jewellery", "womens-bags", "womens-shoes", "tops", "womens-watches"];
 
         const men = ["mens-shirts", "mens-shoes", "mens-watches",];
 
@@ -276,50 +283,51 @@ document.addEventListener('DOMContentLoaded', () => {
                     product.className = 'product';
                     product.id = e.id;
 
-
-                    let img = document.createElement('img');
-                    img.src = `${e.images[0]}`;
+                    let name = document.createElement('div');
+                    name.className = 'name';
+                    let h4 = document.createElement('h4');
+                    h4.innerHTML = e.title;
+                    name.appendChild(h4);
 
                     let description = document.createElement('div');
                     description.className = 'description';
 
-                    let h3 = document.createElement('h3');
-                    h3.innerHTML = e.title;
-
-                    let rate = document.createElement('div');
-                    rate.className = 'rating';
-                    let ratingp = document.createElement('p');
-                    let productbought = document.createElement('p');
-
-                    // coloring the stars used for rating
-
-                    if (Math.floor(e.rating) >= 4) {
-                        ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:green; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
-                    }
-
-                    else {
-                        ratingp.innerHTML = `<i class="fa-solid fa-star " style = "color:red; margin-right: 2px;"></i>`.repeat(Math.ceil(e.rating)) + `${e.rating}`;
-                    }
-
-
-
-                    productbought.innerHTML = 'stock ' + e.stock;
-
+                    let image = document.createElement('div');
+                    image.className = 'image';
+                    let img = document.createElement('img');
+                    img.src = e.images[0];
+                    image.appendChild(img);
+                    description.appendChild(image);
 
                     let price = document.createElement('div');
                     price.className = 'price';
-                    let h4 = document.createElement('h4');
-                    h4.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.floor(e.price * 90);
-                    price.appendChild(h4);
 
 
+                    let pricing = document.createElement('div');
+                    pricing.className = 'pricing';
 
-                    product.appendChild(img);
-                    description.appendChild(h3);
-                    rate.appendChild(ratingp);
-                    rate.appendChild(productbought);
-                    description.appendChild(rate);
+                    let h6 = document.createElement('h6');
+                    h6.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(((e.price + e.discountPercentage) * 86));
+                    let h44 = document.createElement('h4');
+                    h44.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(e.price) * 86;
+
+                    pricing.appendChild(h6);
+                    pricing.appendChild(h44);
+
+
+                    price.innerHTML = ''; // clear first
+
+                    const heart = document.createElement('i');
+                    heart.className = 'fa-regular fa-heart';
+
+                    const cart = document.createElement('i');
+                    cart.className = 'fa-solid fa-cart-shopping';
+
+                    price.append(heart, pricing, cart);
+
                     description.appendChild(price);
+
+                    product.appendChild(name);
                     product.appendChild(description);
                     categoryproducts.appendChild(product);
 
