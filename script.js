@@ -171,8 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 });
 
-            } else{
-                loadprodcuts(products,category2)
+            } else {
+                loadprodcuts(products, category2)
             }
         }
 
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             document.body.classList.toggle('scroll') // to stop scrolling while the intro was playing
             intro.style.display = 'none';
-        }, 1000);
+        }, 3000);
 
     }
 
@@ -341,6 +341,137 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+
+
+    let searchbutton = document.getElementById('searchbutton');
+
+    function searchproducts() {
+        let search = document.getElementById('search').value.trim();
+
+        if (search == '') {
+            search = 'phone';
+        }
+        console.log(search)
+        localStorage.setItem('searched', search);
+        window.open("searched.html", "_blank");
+
+    }
+    searchbutton.addEventListener('click', searchproducts);
+
+    if (document.body.classList.contains('searched')) {
+        div = document.createElement('h1');
+        document.body.appendChild(div);
+    }
+
 });
+document.addEventListener('DOMContentLoaded', () => {
+
+    if (!document.body.classList.contains('searched')) return;
+
+    let search = localStorage.getItem('searched');
+    (async () => {
+        let searchedproducts = document.querySelector('.products');
+        let noresults = document.querySelector('.no-results');
+
+        let mavic = await fetch(`https://dummyjson.com/products/search?q=${search}`)
+        let data = await mavic.json();
+
+        if (data.products.length === 0) {
+            noresults.style.display = 'flex';
+        }
+        else {
+            noresults.style.display = 'none';
+            searchedproducts.innerHTML = '';
+        }
+
+        document.body.style.overflow = 'auto';
+
+        data.products.forEach(e => {
+
+
+
+
+            let product = document.createElement('div');
+            product.className = 'product';
+            product.id = e.id;
+
+            let name = document.createElement('div');
+            name.className = 'name';
+            let h4 = document.createElement('h4');
+            h4.innerHTML = e.title;
+            name.appendChild(h4);
+
+            let description = document.createElement('div');
+            description.className = 'description';
+
+            let image = document.createElement('div');
+            image.className = 'image';
+            let img = document.createElement('img');
+            img.src = e.images[0];
+            image.appendChild(img);
+            description.appendChild(image);
+
+            let price = document.createElement('div');
+            price.className = 'price';
+
+
+            let pricing = document.createElement('div');
+            pricing.className = 'pricing';
+
+            let h6 = document.createElement('h6');
+            h6.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(((e.price + e.discountPercentage) * 86));
+            let h44 = document.createElement('h4');
+            h44.innerHTML = `<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(e.price) * 86;
+
+            pricing.appendChild(h6);
+            pricing.appendChild(h44);
+
+
+            price.innerHTML = ''; // clear first
+
+            const heart = document.createElement('i');
+            heart.className = 'fa-regular fa-heart';
+
+            const cart = document.createElement('i');
+            cart.className = 'fa-solid fa-cart-shopping';
+
+            price.append(heart, pricing, cart);
+
+            description.appendChild(price);
+
+            product.appendChild(name);
+            product.appendChild(description);
+            searchedproducts.appendChild(product);
+        })
+        // sliding cart creation 
+
+        let cart = document.querySelector('.cart-slide');
+        let slidingcart = document.querySelector('.cart');
+        let closecart = document.querySelector('.close-cart');
+        let slidingcartmobile = document.querySelector('.cart-mobile');
+        let closecartmobile = document.querySelector('.close-mobile .close-cart');
+
+        cart.addEventListener('click', (e) => {
+            e.preventDefault();
+            slidingcart.classList.toggle('active');
+            slidingcartmobile.classList.toggle('active');
+        })
+        closecart.addEventListener('click', (e) => {
+            e.preventDefault();
+            slidingcart.classList.toggle('active');
+        })
+        closecartmobile.addEventListener('click', (e) => {
+            e.preventDefault();
+            slidingcartmobile.classList.toggle('active');
+        })
+
+    })();
+
+    document.getElementById('home').addEventListener('click', () => {
+        window.location.href = "index.html";
+    });
+
+});
+
 
 
