@@ -348,6 +348,7 @@ section {
     width: auto;
     height: auto;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 .product .description {
