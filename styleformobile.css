@@ -778,7 +778,7 @@
 
     .buy-page .address {
         width: 96% !important;
-        height: 60% !important;
+        height: 70% !important;
         background-color: #ffffff;
         box-sizing: border-box;
         margin-top: 10px;
@@ -821,7 +821,7 @@
 
     tr {
         width: 50%;
-        height: 6%;
+        height: 10%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -831,15 +831,15 @@
 
     td {
         width: 100%;
-        margin: 1px 1px;
-        font-size: xx-small;
+        margin: 4px 1px;
+        font-size: small;
     }
 
     td input {
         width: 100%;
-        height: 10px;
+        height: 18px;
         padding: 5px;
-        font-size: xx-small;
+        font-size: small;
         outline: none;
         border: 1px solid #e6e6e6;
         font-weight: 700;
@@ -857,16 +857,16 @@
     textarea {
         border: 1px solid #e6e6e6;
         outline: none;
-        height: 20px;
+        height: 30px;
         width: 200%;
-        font-size: xx-small;
+        font-size: small;
         padding: 5px;
         font-weight: 700;
     }
 
     label {
         width: 80%;
-        font-size: xx-small;
+        font-size: x-small;
         font-family: "Google Sans Flex", sans-serif;
         font-weight: bold;
     }
@@ -885,7 +885,7 @@
     .buy-page .validate {
         padding: 1px 3px;
         text-align: center;
-        font-size: xx-small;
+        font-size: x-small;
         width: 40%;
         font-family: "Google Sans Flex", sans-serif;
         font-weight: bold;
@@ -912,8 +912,8 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        margin-top: 4px;
-        height: 20px;
+        margin-top: 6px;
+        height: 25px;
         font-size: x-small;
     }
 
@@ -962,7 +962,7 @@
     .cart-item {
         margin-top: 5px;
         width: 90%;
-        height: 25%;
+        height: 30%;
         position: relative;
         display: flex;
         flex-direction: row;
@@ -973,7 +973,7 @@
     }
 
     .cart-item img {
-        width: 20%;
+        width: 25%;
     }
 
     .cart-info {
@@ -994,13 +994,13 @@
     }
 
     .cart-item h3 {
-        font-size: x-small;
+        font-size: small;
     }
 
     .total {
         width: 100%;
         display: flex;
-        font-size: x-small;
+        font-size: small;
         flex-direction: column;
     }
 
