@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-
-    // creating slider 
-    if (document.body.classList.contains('home')) {
-        const menuicon = document.querySelector('.menuicon');
-        const navmenu = document.querySelector('.nav-menu');
+    const menuicon = document.querySelector('.menuicon');
+    const navmenu = document.querySelector('.nav-menu');
+    if (menuicon && navmenu) {
         menuicon.addEventListener('click', () => {
             navmenu.classList.toggle('active');
-        })
+        });
 
         let slideindex = 0;
 
@@ -151,10 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     price.innerHTML = ''; // clear first
 
                     const heart = document.createElement('i');
-                    heart.className = 'fa-regular fa-heart';
+                    heart.className = 'fa-regular fa-heart wishlistitem';
 
                     const cart = document.createElement('i');
-                    cart.className = 'fa-solid fa-cart-shopping';
+                    cart.className = 'fa-solid fa-cart-shopping productcart';
 
                     price.append(heart, pricing, cart);
 
@@ -186,10 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let intro = document.querySelector('.intro');
 
-        setTimeout(() => {
-            document.body.classList.toggle('scroll') // to stop scrolling while the intro was playing
+        const introseen = sessionStorage.getItem('introseen');
+        if (introseen) {
             intro.style.display = 'none';
-        }, 3000);
+            document.body.classList.toggle('scroll')
+        }
+        else {
+
+
+            setTimeout(() => {
+                document.body.classList.toggle('scroll') // to stop scrolling while the intro was playing
+                intro.style.display = 'none';
+                sessionStorage.setItem('introseen', 'true');
+            }, 3000);
+        }
 
     }
 
@@ -318,10 +325,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     price.innerHTML = ''; // clear first
 
                     const heart = document.createElement('i');
-                    heart.className = 'fa-regular fa-heart';
+                    heart.className = 'fa-regular fa-heart wishlistitem';
 
                     const cart = document.createElement('i');
-                    cart.className = 'fa-solid fa-cart-shopping';
+                    cart.className = 'fa-solid fa-cart-shopping productcart';
 
                     price.append(heart, pricing, cart);
 
@@ -434,10 +441,10 @@ document.addEventListener('DOMContentLoaded', () => {
             price.innerHTML = ''; // clear first
 
             const heart = document.createElement('i');
-            heart.className = 'fa-regular fa-heart';
+            heart.className = 'fa-regular fa-heart wishlistitem';
 
             const cart = document.createElement('i');
-            cart.className = 'fa-solid fa-cart-shopping';
+            cart.className = 'fa-solid fa-cart-shopping productcart';
 
             price.append(heart, pricing, cart);
 
@@ -482,16 +489,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // user clicks a product
+let wishcount = 0;
+let cartcount = 0;
+let productsincart = [];
 
 document.body.addEventListener('click', (e) => {
-    if (e.target.closest('.product')) {
 
-        const productid = e.target.closest('.product').getAttribute('id')
-        localStorage.setItem('product-id', productid)
+    const ismenu = e.target.closest('.menuicon, .nav-menu, .cart-slide, #home');
+
+    const productid = e.target.closest('.product');
+    const cartbtn = e.target.closest('.productcart');
+    const wishlist = e.target.closest('.wishlistitem');
+
+
+
+
+    if (cartbtn) {
+        e.stopPropagation();
+        cartcount++
+
+        if (cartcount % 2 == 0) {
+            cartbtn.classList.toggle('fa-solid');
+            cartbtn.style.color = 'black';
+            return;
+        } else {
+            cartbtn.classList.toggle('fa-solid');
+            cartbtn.style.color = 'green';
+            productidofcart = cartbtn.closest('.product').getAttribute('id');
+            let item = productsincart.find(p => p.id === productidofcart);
+            if (item) {
+                item.qty++;
+            }
+            else {
+
+                productsincart.push({ id: productidofcart, qty: 1 });
+            }
+            console.log(productsincart);
+            addtocart(productsincart)
+        }
+
+
+        e.preventDefault();
+        return;
+    }
+    if (wishlist) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        wishcount++
+
+        if (wishcount % 2 == 0) {
+            wishlist.classList.toggle('fa-regular');
+            wishlist.style.color = 'black';
+
+        } else {
+            wishlist.classList.toggle('fa-solid');
+            wishlist.style.color = 'red';
+            wishlistofid = wishlist.closest('.product').getAttribute('id');
+            console.log(wishlistofid);
+        }
+
+
+        return;
+    }
+
+
+    if (ismenu) {
+        return;
+    }
+
+    if (productid) {
+        let productidd = productid.getAttribute('id');
+        localStorage.setItem('product-id', productidd);
 
         window.open('product.html', '_blank');
     }
+
 })
+
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('buy')) {
+        console.log('mavvic');
+        window.location.href = 'buy.html';
+    }
+});
+
+
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -506,17 +594,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     Productdetails();
 
-
-
-
-
-
-
     async function Productdetails() {
         let fetched = await fetch(`https://dummyjson.com/products/${productidd}`)
         let data = await fetched.json();
         console.log(data);
-        
+
         let productmain = document.querySelector('.product-main');
         productmain.innerHTML = `<div class="product-needs">
         <div class="image product-slider">
@@ -537,19 +619,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <pre>${(data.reviews.length + 1) + ' Reviews'}</pre>
               </div>
               <h1 id='heading' style="width: 80%; display: inline-flex; align-items: center">
-                 ${`<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(data.price) * 86}<del>${`<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(((data.price + data.discountPercentage) * 86))}</del>
+                 ${`<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(data.price) * 86}<del>${`<i class="fa-solid fa-indian-rupee-sign"></i>` + Math.ceil(((data.price + (data.price * data.discountPercentage / 100)) * 86))}</del>
                 <pre>${data.discountPercentage}%off</pre>
               </h1>
             </div>
-
+            <p style= "margin:10px 0;font-size:16px;font-weight:bold;">${data.availabilityStatus}</p>
             <div class="descr">
               <p>${data.description}</p>
             </div>
           </div>
             <p style= "margin:10px 0 0 0;font-size:30px;font-weight:bold;">${data.warrantyInformation}</p>
+            <p style= "margin:10px 0 0 0;font-size:16px;font-weight:bold;">${data.shippingInformation}</p>
+            <p style= "margin:10px 0 0 0;font-size:16px;font-weight:bold;">${data.returnPolicy}</p>
           <div class="buynow">
-            <button><i class="fa-solid fa-cart-shopping"></i>add to cart</button>
-            <button><i class="fa-solid fa-bag-shopping"></i>buy now</button>
+            <button class = "productcart" id = "${data.id}"><i class="fa-solid fa-cart-shopping"></i>add to cart</button>
+            <button class = "buy"><i class="fa-solid fa-bag-shopping"></i>buy now</button>
           </div>
           <div class="reviews">
             <h2>Rating & Reviews</h2>
@@ -696,7 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        fetching(datacategory.products,categoryproducts);
+        fetching(datacategory.products, categoryproducts);
 
     }
 
@@ -721,9 +805,98 @@ document.addEventListener('DOMContentLoaded', () => {
     closecartmobile.addEventListener('click', (e) => {
         e.preventDefault();
         slidingcartmobile.classList.toggle('active');
-    })
+    });
+
 
 })
+
+let wishlistproducts = [];
+let wishlistofid;
+
+
+let productidofcart;
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('productcart')) {
+        productidofcart = e.target.getAttribute('id');
+    };
+    console.log(productidofcart);
+
+});
+
+let cartitems = document.querySelector('.cart-items');
+let cartitemsmobile = document.querySelector('.cart-mobile-items');
+
+let productstorender = [];
+let isRenderingCart = false;
+
+async function addtocart(productcart) {
+
+    if (isRenderingCart) return;
+    isRenderingCart = true;
+
+    cartitems.innerHTML = '';
+    cartitemsmobile.innerHTML = '';
+
+    productstorender = [];
+
+    for (let e of productcart) {
+
+        let fetchproduct = await fetch(`https://dummyjson.com/products/${e.id}`);
+
+        let data = await fetchproduct.json();
+        console.log(data);
+
+
+        if (data.brand == null || 0) {
+            data.brand = 'no brand';
+        }
+
+        productstorender.push({ id: data.id, img: data.images[0], brand: data.brand, title: data.title, price: data.price, quantity: e.qty });
+
+        localStorage.setItem('productstorender', JSON.stringify(productstorender));
+
+
+        console.log(productstorender);
+
+        isRenderingCart = false;
+
+    };
+
+}
+
+let cartt = document.querySelector('.cart-slide');
+cartt.addEventListener('click', () => {
+
+    for (let e of productstorender) {
+        cartitems.innerHTML += `<div class="cart-item">
+          <img src="${e.img}" alt="">
+          <p class="product-quantity">${e.quantity}</p>
+          <div class="cart-info">
+            <h3>${e.title}</h3>
+            <p>${e.brand || 'no brand'}</p>
+          </div>
+          <h3><i class="fa-solid fa-indian-rupee-sign"></i>  ${Math.floor((e.price * 86) * e.quantity)}</h3>
+        </div>`;
+    }
+
+});
+
+
+let openbuy = document.querySelector('.openbuy');
+
+if (productsincart === 0) {
+    openbuy.style.display = 'none';
+}
+
+openbuy.addEventListener('click', () => {
+    window.open('buy.html', '_blank')
+})
+
+
+
+
+
 
 
 

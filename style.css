@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 * {
     margin: 0;
@@ -155,7 +154,8 @@ section {
 /* cart floating */
 
 .cart {
-    background-color: #7c3971;
+    background-color:white;
+    color: black;
     width: 0;
     display: flex;
     flex-direction: column;
@@ -195,6 +195,7 @@ section {
 
 .cart .cart-items {
     height: 80%;
+    overflow: scroll;
 }
 
 /* cart close styling */
@@ -202,12 +203,17 @@ section {
 .cart .close {
     width: 100%;
     position: relative;
-    height: 5%;
+    height: 10%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+.cart .close>:first-child{
+    background-color: #388E3C;
+    margin:5px 0 ;
 }
 
 .cart .close a {
@@ -329,6 +335,7 @@ section {
     width: 25%;
     box-sizing: border-box;
     padding: 1%;
+    cursor: pointer;
 }
 
 .product .name {
@@ -344,12 +351,14 @@ section {
 }
 
 .product .name h4 {
+    font-size: small;
     text-orientation: upright;
     rotate: calc(270deg);
-    width: auto;
-    height: auto;
+    /* width: auto;
+    height: auto; */
     white-space: nowrap;
-    /* overflow: hidden; */
+    max-width: 200px;
+    text-overflow: ellipsis;
 }
 
 .product .description {
@@ -801,4 +810,228 @@ footer {
 
 #category {
     margin-top: 40px;
+}
+
+
+
+/* checkout page*/
+.buy-page{
+    overflow: auto;
+}
+
+.buy-page #main {
+    width: 90%;
+    margin: auto 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buy-page .address {
+    width: 58%;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin-top: 30px;
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.353);
+    border-radius: 5px;
+    padding: 50px;
+    transition: all 2s ease;
+    height: 83vh;   
+}
+
+
+
+.buy-page .payment {
+    width: 40%;
+}
+
+form {
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+legend {
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    width: 1%;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+td {
+    width: 50%;
+    margin: 5px 5px;
+}
+
+td input {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    font-size: medium;
+    outline: none;
+    border: 1px solid #e6e6e6;
+    font-weight: 700;
+}
+
+td input:focus {
+    border: 2px solid #7c3971;
+}
+
+.state {
+    display: flex;
+    flex-direction: row;
+}
+
+textarea {
+    border: 1px solid #e6e6e6;
+    outline: none;
+    height: 60px;
+    width: 200%;
+    padding: 5px;
+    font-weight: 700;
+}
+
+label {
+    font-size: large;
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: bold;
+}
+
+.buy-page button {
+    width: auto;
+    padding: 5px 18px;
+    font-size: large;
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: bold;
+    border: none;
+    background-color: #388E3C;
+    color: white;
+}
+
+.buy-page .validate{
+    padding: 5px 18px;
+    text-align: center;
+    font-size: large;
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: bold;
+    border: none;
+    background-color: #7c3971;
+    color: white;
+}
+
+.buy-page td button{
+    color: white;
+}
+.address-card{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.address-card span{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.address-card h4{
+    width: 40%;
+    display: inline;
+    font-size: large;
+}
+.address-card button{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.address-card button svg{
+    font-size: 16px;
+}
+.address-card p{
+    font-weight: bold;
+}
+
+.buy-page .payment{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 2% 5%;
+    transition: all 2s ease;
+    height: 88vh;
+}
+
+.product-cart{
+    height: 55vh;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.cart-item{
+    margin-top: 10px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center ; 
+}
+
+.cart-item img{
+    width: 20%;
+}
+
+.cart-info{
+    display: flex;
+    flex-direction: column;
+}
+.product-quantity{
+    position: absolute;
+    top: 0;
+    left: 20%;
+    font-size: small;
+    border-radius: 50%;
+    padding: 1px 6px;
+    background-color: #060606;
+    color: white;
+}
+
+.total{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.total span{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.total hr{
+    border: 1.6px dashed black;
+    margin: 10px 0;
+}
+
+#qrcode {
+    display: none;
+    right: 10%;
+    position: absolute;
+    top: 30%;
 }

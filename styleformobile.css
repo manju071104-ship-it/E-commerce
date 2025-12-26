@@ -223,8 +223,13 @@
         display: flex;
         flex-direction: row;
         text-align: center;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
+    }
+
+    .cart-mobile .close-mobile>:first-child {
+        background-color: #388E3C;
+        margin: 5px 0;
     }
 
     .cart-mobile .close-mobile a {
@@ -306,6 +311,8 @@
         width: auto;
         height: auto;
         white-space: nowrap;
+        max-width: 140px;
+        text-overflow: ellipsis;
     }
 
     .product .description {
@@ -350,16 +357,17 @@
     }
 
     .product .description .price>svg {
-        height: 10px;
+        height: 14px;
     }
 
     .product .description .price h4 {
-        font-size: small;
+        font-size: x-small;
         margin: 0;
     }
 
     .product .description .price h6 {
         font-size: xx-small;
+        text-decoration: line-through;
     }
 
     .product .description .price .pricing {
@@ -750,6 +758,269 @@
 
     #category {
         margin-top: 20px;
+        font-size: medium;
+    }
+
+
+
+    /* checkout page*/
+    .buy-page {
+        overflow: auto;
+    }
+
+    .buy-page #main {
+        width: 96%;
+        margin: auto 2%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .buy-page .address {
+        width: 96% !important;
+        height: 60% !important;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        margin-top: 10px;
+        box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.353);
+        border-radius: 5px;
+        padding: 5px;
+        transition: all 2s ease;
+    }
+
+
+
+    .buy-page .payment {
+        width: 96%;
+    }
+
+    form {
+        border: 1px solid rgba(0, 0, 0, .1);
+        box-sizing: border-box;
+        padding: 5px;
+    }
+
+    legend {
+        font-size: large;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th {
+        width: 1%;
+    }
+
+    tbody {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    tr {
+        width: 50%;
+        height: 6%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2px 0;
+    }
+
+    td {
+        width: 100%;
+        margin: 1px 1px;
+        font-size: xx-small;
+    }
+
+    td input {
+        width: 100%;
+        height: 10px;
+        padding: 5px;
+        font-size: xx-small;
+        outline: none;
+        border: 1px solid #e6e6e6;
+        font-weight: 700;
+    }
+
+    td input:focus {
+        border: 2px solid #7c3971;
+    }
+
+    .state {
+        display: flex;
+        flex-direction: row;
+    }
+
+    textarea {
+        border: 1px solid #e6e6e6;
+        outline: none;
+        height: 20px;
+        width: 200%;
+        font-size: xx-small;
+        padding: 5px;
+        font-weight: 700;
+    }
+
+    label {
+        width: 80%;
+        font-size: xx-small;
+        font-family: "Google Sans Flex", sans-serif;
+        font-weight: bold;
+    }
+
+    .buy-page button {
+        width: auto;
+        padding: 1px 3px;
+        font-size: small;
+        font-family: "Google Sans Flex", sans-serif;
+        font-weight: bold;
+        border: none;
+        background-color: #388E3C;
+        color: white;
+    }
+
+    .buy-page .validate {
+        padding: 1px 3px;
+        text-align: center;
+        font-size: xx-small;
+        width: 40%;
+        font-family: "Google Sans Flex", sans-serif;
+        font-weight: bold;
+        border: none;
+        background-color: #7c3971;
+        color: white;
+    }
+
+    .buy-page td button {
+        color: white;
+    }
+
+    .address-card {
+        width: 100%;
+        height: 50%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: small;
+    }
+
+    .address-card span {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 4px;
+        height: 20px;
+        font-size: x-small;
+    }
+
+    .address-card h4 {
+        width: 40%;
+        display: inline;
+        font-size: x-small;
+    }
+
+    .address-card button {
+        display: flex;
+        margin-top: 5px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        font-size: small;
+    }
+
+    .address-card button svg {
+        font-size: 8px;
+    }
+
+    .address-card p {
+        font-weight: bold;
+    }
+
+    .buy-page .payment {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding: 1% 2%;
+        width: 96%;
+        transition: all 2s ease;
+        height: auto;
+    }
+
+    .product-cart {
+        height: 40%;
+        justify-content: center;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-item {
+        margin-top: 5px;
+        width: 90%;
+        height: 25%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        font-size: small;
+    }
+
+    .cart-item img {
+        width: 20%;
+    }
+
+    .cart-info {
+        display: flex;
+        flex-direction: column;
+        font-size: x-small;
+    }
+
+    .product-quantity {
+        position: absolute;
+        top: 0;
+        left: 14%;
+        font-size: xx-small;
+        border-radius: 50%;
+        padding: 1px 3px;
+        background-color: #060606;
+        color: white;
+    }
+
+    .cart-item h3 {
+        font-size: x-small;
+    }
+
+    .total {
+        width: 100%;
+        display: flex;
+        font-size: x-small;
+        flex-direction: column;
+    }
+
+    .total span {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .total hr {
+        border: 1.6px dashed black;
+        margin: 5px 0;
+    }
+
+    #qrcode {
+        display: none;
+        right: 12%;
+        position: absolute;
+        top: 10%;
     }
 
 }
@@ -844,6 +1115,8 @@
         width: auto;
         height: auto;
         white-space: nowrap;
+        max-width: 160px;
+        text-overflow: ellipsis;
     }
 
     .product .description {
@@ -990,5 +1263,4 @@
         height: 30px;
         margin-right: 1rem;
     }
-
 }
