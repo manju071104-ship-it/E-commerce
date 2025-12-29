@@ -869,7 +869,10 @@ let cartt = document.querySelector('.cart-slide');
 cartt.addEventListener('click', () => {
 
     for (let e of productstorender) {
-        cartitems.innerHTML += `<div class="cart-item">
+
+        if (cartitems) {
+
+            cartitems.innerHTML += `<div class="cart-item">
           <img src="${e.img}" alt="">
           <p class="product-quantity">${e.quantity}</p>
           <div class="cart-info">
@@ -878,21 +881,41 @@ cartt.addEventListener('click', () => {
           </div>
           <h3><i class="fa-solid fa-indian-rupee-sign"></i>  ${Math.floor((e.price * 86) * e.quantity)}</h3>
         </div>`;
+        }
+        if (cartitemsmobile) {
+            cartitemsmobile.innerHTML += `<div class="cart-item">
+          <img src="${e.img}" alt="">
+          <p class="product-quantity">${e.quantity}</p>
+          <div class="cart-info">
+            <h3>${e.title}</h3>
+            <p>${e.brand || 'no brand'}</p>
+          </div>
+          <h3><i class="fa-solid fa-indian-rupee-sign"></i>  ${Math.floor((e.price * 86) * e.quantity)}</h3>
+        </div>`;
+        }
     }
 
 });
 
 
 let openbuy = document.querySelector('.openbuy');
+console.log(openbuy)
 
 if (productsincart === 0) {
     openbuy.style.display = 'none';
 }
 
 openbuy.addEventListener('click', () => {
-    window.open('buy.html', '_blank')
+    window.open('buy.html', '_blank');
 })
 
+
+document.addEventListener('click',(e) => {
+    butbtn = e.target.closest('.openbuy');
+    if(butbtn){
+        window.open('buy.html','_blank')
+    }
+})
 
 
 
