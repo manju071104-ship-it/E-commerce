@@ -867,12 +867,14 @@ async function addtocart(productcart) {
 
 let cartt = document.querySelector('.cart-slide');
 cartt.addEventListener('click', () => {
+    if (cartitems) cartitems.innerHTML = "";
+    if (cartitemsmobile) cartitemsmobile.innerHTML = "";
 
     for (let e of productstorender) {
 
-        if (cartitems) {
 
-            cartitems.innerHTML += `<div class="cart-item">
+
+        const cartHTML = `<div class="cart-item">
           <img src="${e.img}" alt="">
           <p class="product-quantity">${e.quantity}</p>
           <div class="cart-info">
@@ -881,17 +883,13 @@ cartt.addEventListener('click', () => {
           </div>
           <h3><i class="fa-solid fa-indian-rupee-sign"></i>  ${Math.floor((e.price * 86) * e.quantity)}</h3>
         </div>`;
+
+        if (cartitems) {
+            cartitems.innerHTML += cartHTML;
         }
+
         if (cartitemsmobile) {
-            cartitemsmobile.innerHTML += `<div class="cart-item">
-          <img src="${e.img}" alt="">
-          <p class="product-quantity">${e.quantity}</p>
-          <div class="cart-info">
-            <h3>${e.title}</h3>
-            <p>${e.brand || 'no brand'}</p>
-          </div>
-          <h3><i class="fa-solid fa-indian-rupee-sign"></i>  ${Math.floor((e.price * 86) * e.quantity)}</h3>
-        </div>`;
+            cartitemsmobile.innerHTML += cartHTML;
         }
     }
 
@@ -910,10 +908,10 @@ openbuy.addEventListener('click', () => {
 })
 
 
-document.addEventListener('click',(e) => {
+document.addEventListener('click', (e) => {
     butbtn = e.target.closest('.openbuy');
-    if(butbtn){
-        window.open('buy.html','_blank')
+    if (butbtn) {
+        window.open('buy.html', '_blank')
     }
 })
 

@@ -962,7 +962,7 @@
     .cart-item {
         margin-top: 5px;
         width: 90%;
-        height: 30%;
+        /* height: 30%; */
         position: relative;
         display: flex;
         flex-direction: row;
